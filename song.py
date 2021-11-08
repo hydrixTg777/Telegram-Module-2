@@ -78,3 +78,16 @@ async def _(event):
         await okla.delete()
     except Exception:
         return await eor(okla, "`Song not found.`")
+CMD_HELP.update(
+    {
+        "": """**Plugin : **`Song`
+        
+        ✘ Commands Available -
+• `.lyrics <search query>`
+    get lyrics of song.
+
+• `.songs <search query>`
+    alternative song command.
+"""
+    }
+)
