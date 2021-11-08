@@ -3,18 +3,13 @@
 # that can only check client/owner's limitations
 # but now can check anyone's limitations
 
-"""
-✘ Commands Available -
 
-• `{i}limited`
-   Check restrictions on someone/self account!
 
-"""
 
 from . import *
 
 
-@ultroid_cmd(pattern="limited ?(.*)")
+@beast_cmd(pattern=".limited ?(.*)")
 async def _(e):
     match = e.pattern_match.group(1)
     msg = await eor(e, "checking if account is limited or not...")
@@ -35,3 +30,16 @@ async def _(e):
     return await msg.edit(
         "`Good news, no limits are currently applied to account. You’re free as a bird!`"
     )
+CMD_HELP.update(
+    {
+        "": """**Plugin : **`Limited`
+        ✘ Commands Available -
+
+• `.limited`
+   Check restrictions on someone/self account!
+
+"""
+       
+
+    }
+)
