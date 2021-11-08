@@ -5,22 +5,8 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
-"""
-✘ Commands Available -
-• `{i}spam <no of msgs> <your msg>`
-  `{i}spam <no of msgs> <reply message>`
-    spams chat, the current limit for this is from 1 to 99.
 
-• `{i}bigspam <no of msgs> <your msg>`
-  `{i}bigspam <no of msgs> <reply message>`
-    Spams chat, the current limit is above 100.
 
-• `{i}delayspam <delay time> <count> <msg>`
-    Spam chat with delays..
-
-• `{i}tspam <text>`
-    Spam Chat with One-One Character..
-"""
 
 import asyncio
 import os
@@ -28,7 +14,7 @@ import os
 from . import *
 
 
-@ultroid_cmd(pattern="tspam")
+@beast_cmd(pattern=".tspam")
 async def tmeme(e):
     tspam = str(e.text[7:])
     message = tspam.replace(" ", "")
@@ -37,7 +23,7 @@ async def tmeme(e):
     await e.delete()
 
 
-@ultroid_cmd(pattern="spam")
+@beast_cmd(pattern=".spam")
 async def spammer(e):
     message = e.text
     if e.reply_to:
@@ -59,7 +45,7 @@ async def spammer(e):
     await e.delete()
 
 
-@ultroid_cmd(pattern="bigspam", fullsudo=True)
+@beast_cmd(pattern=".bigspam")
 async def bigspam(e):
     message = e.text
     if e.reply_to:
@@ -79,7 +65,7 @@ async def bigspam(e):
     await e.delete()
 
 
-@ultroid_cmd(pattern="delayspam ?(.*)")
+@beast_cmd(pattern=".delayspam ?(.*)")
 async def delayspammer(e):
     try:
         args = e.text.split(" ", 3)
@@ -95,3 +81,25 @@ async def delayspammer(e):
             await asyncio.sleep(delay)
     except Exception as u:
         await e.respond(f"**Error :** `{u}`")
+CMD_HELP.update(
+    {
+        "": """**Plugin : **`SPAM`
+        ✘ Commands Available -
+• `.spam <no of msgs> <your msg>`
+  `.spam <no of msgs> <reply message>`
+    spams chat, the current limit for this is from 1 to 99.
+
+• `.bigspam <no of msgs> <your msg>`
+  `.bigspam <no of msgs> <reply message>`
+    Spams chat, the current limit is above 100.
+
+• `.delayspam <delay time> <count> <msg>`
+    Spam chat with delays..
+
+• `.tspam <text>`
+    Spam Chat with One-One Character..
+
+        
+"""
+    }
+)
