@@ -5,13 +5,13 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
-"""
-✘ Commands Available
 
-• `{i}hack`
-    Do a Prank With Replied user.
 
-"""
+
+
+
+
+
 
 import asyncio
 import random
@@ -19,7 +19,7 @@ import random
 from . import *
 
 
-@ultroid_cmd(pattern="hack")
+@beast_cmd(pattern=".hack")
 async def _(event):
     animation_interval = 0.7
     animation_ttl = range(0, 11)
@@ -132,3 +132,14 @@ async def _(event):
     MSG += " Don't worry only i can open this 😎😎.. If u don't"
     MSG += f" Believe me, try to download` 🙂\n\n{ME}"
     await xx.edit(MSG)
+CMD_HELP.update(
+    {
+        "": """**Plugin : **`Hack`
+        
+        ✘ Commands Available
+
+• `.hack`
+    Do a Prank With Replied user.
+"""
+    }
+)
