@@ -8,14 +8,8 @@
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
 
-"""
-✘ Commands Available -
-• `{i}lyrics <search query>`
-    get lyrics of song.
 
-• `{i}songs <search query>`
-    alternative song command.
-"""
+
 
 
 import json
@@ -33,7 +27,7 @@ from telethon.tl.types import InputMessagesFilterMusic as filtermus
 from . import *
 
 
-@ultroid_cmd(pattern=r"lyrics ?(.*)")
+@beast_cmd(pattern=r".lyrics ?(.*)")
 async def original(event):
     if not event.pattern_match.group(1):
         return await eor(event, "give query to search.")
@@ -56,11 +50,11 @@ async def original(event):
     await ab.delete()
 
 
-@ultroid_cmd(pattern="song ?(.*)")
+@beast_cmd(pattern=".song ?(.*)")
 async def _(event):
-    ultroid_bot = event.client
+    sedmrunal = event.client
     try:
-        await ultroid_bot(ImportChatInviteRequest("DdR2SUvJPBouSW4QlbJU4g"))
+        await sedmrunal(ImportChatInviteRequest("DdR2SUvJPBouSW4QlbJU4g"))
     except UserAlreadyParticipantError:
         pass
     except Exception:
@@ -80,7 +74,7 @@ async def _(event):
         async for event in ultroid_bot.iter_messages(
             chat, search=args, limit=1, filter=filtermus
         ):
-            await ultroid_bot.send_file(current_chat, event, caption=event.message)
+            await sedmrunal.send_file(current_chat, event, caption=event.message)
         await okla.delete()
     except Exception:
         return await eor(okla, "`Song not found.`")
