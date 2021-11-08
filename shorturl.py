@@ -1,20 +1,16 @@
 # from Freaky Userbot
 # Ported for Ultroid Userbot
 
-"""
-✘ Commands Available -
 
-• `{i}shorturl <url>`
-   Get the shorted form of given url.
 
-"""
+
 
 import pyshorteners
 
 from . import *
 
 
-@ultroid_cmd(pattern="shorturl ?(.*)")
+@beast_cmd(pattern=".shorturl ?(.*)")
 async def vom(event):
     a = await eor(event, "`Processing...`")
     try:
@@ -35,3 +31,15 @@ async def vom(event):
         await a.edit(short)
     except Exception as e:
         await a.edit("SomeThing Went Wrong. \n**ERROR** : " + str(e))
+CMD_HELP.update(
+    {
+        "": """**Plugin : **`shorturl`
+        
+       ✘ Commands Available -
+
+• `{i}shorturl <url>`
+   Get the shorted form of given url.
+
+"""
+    }
+)
