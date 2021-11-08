@@ -1,18 +1,3 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-
-
-"""
-✘ Commands Available
-
-• `{i}icon <query>`
-    Icon search from flaticon.com and uploading as sticker.
-
-"""
 
 import os
 import random
@@ -23,7 +8,7 @@ from bs4 import BeautifulSoup as bs
 from . import *
 
 
-@ultroid_cmd(pattern="icon ?(.*)")
+@beast_cmd(pattern=".icon ?(.*)")
 async def www(e):
     a = e.pattern_match.group(1)
     if not a:
@@ -45,3 +30,19 @@ async def www(e):
     except Exception as E:
         LOGS.info(E)
         await tt.edit("`No Results Found`")
+
+        
+CMD_HELP.update(
+    {
+        "": """**Plugin : **`Flaticon`
+        
+
+        ✘ Commands Available
+
+• `.icon <query>`
+    Icon search from flaticon.com and uploading as sticker.
+
+"""
+    }
+)
+        
