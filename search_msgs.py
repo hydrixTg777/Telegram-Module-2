@@ -3,21 +3,10 @@
 # idea: https://t.me/TelethonChat/256160
 
 
-"""
-✘ To Search Messages in chat easily :)
-
-✘ **CMD** :
->> {i}search (some_text)
->> {i}search -r (some_text) : 10
-    »» To search in Reverse order.
-
-✘ **Examples** :
-   •  `{i}search Ultroid`
-   •  `{i}search -r Heroku : 10`
-"""
+from . import *
 
 
-@ultroid_cmd(pattern="search( -r|) ?(.*)")
+@beast_cmd(pattern=".search( -r|) ?(.*)")
 async def searcher(e):
     eris = await eor(e, "`Working..`")
     args = e.pattern_match.group(2)
@@ -50,3 +39,21 @@ async def searcher(e):
         else f"**No Results for :**  `{args}`"
     )
     await eris.edit(txt) 
+CMD_HELP.update(
+    {
+        "": """**Plugin : **`search_msgs`
+       ✘ To Search Messages in chat easily :)
+
+✘ **CMD** :
+>> .search (some_text)
+>> .search -r (some_text) : 10
+    »» To search in Reverse order.
+
+✘ **Examples** :
+   •  `.search Beast`
+   •  `.search -r Heroku : 10`
+
+
+"""
+    }
+)
