@@ -5,15 +5,8 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
-"""
-✘ Commands Available -
 
-• `{i}quotly | {i}qbot <colour name/code><replying a message>`
-    send stickers to current chat with QuotlyBot.
 
-• `{i}q <reply>`
-    Make sticker quote without QuotlyBot
-"""
 
 import asyncio
 
@@ -25,7 +18,7 @@ from . import *
 ERR = "`Can you kindly disable your forward privacy settings for good?`"
 
 
-@ultroid_cmd(pattern="(quotly|qbot) ?(.*)")
+@beast_cmd(pattern="(.quotly|.qbot) ?(.*)")
 async def _(event):
     if not event.reply_to_msg_id:
         return await eor(event, "```Reply to any user message.```")
@@ -476,7 +469,7 @@ async def replied_user(draw, tot, text, maxlength, title):
             space += textfont.getsize(letter)[0]
 
 
-@ultroid_cmd(pattern="q$")
+@beast_cmd(pattern=".q$")
 async def _(event):
     reply = await event.get_reply_message()
     msg = reply.message
@@ -490,3 +483,17 @@ async def _(event):
         event.chat_id, "sticker.webp", reply_to=event.reply_to_msg_id
     )
     os.remove("sticker.webp")
+CMD_HELP.update(
+    {
+        "": """**Plugin : **`Quotly`
+        
+        ✘ Commands Available -
+
+• `quotly | .qbot <colour name/code><replying a message>`
+    send stickers to current chat with QuotlyBot.
+
+• `.q <reply>`
+    Make sticker quote without QuotlyBot
+"""
+    }
+)
