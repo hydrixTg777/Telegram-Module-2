@@ -1,15 +1,5 @@
-# Made by : @Hackintush || github.com/ToxygenX
-# Made For : https://github.com/TeamUltroid/UltroidAddons
 
-"""
-✘ Commands Available
 
-• `{i}bf`
-    Text to Brainfuck String Generator with text or reply.
-
-• `{i}rbf`
-    Brainfuck Interpreter with string or reply.
-"""
 
 from . import *
 
@@ -166,7 +156,7 @@ def bf(text):
   return ''.join(items)
 
 
-@ultroid_cmd(
+@beast_cmd(
     pattern="bf",
 )
 async def _(event):        
@@ -180,7 +170,7 @@ async def _(event):
     await eor(event, f"{bf(input_)}")
     
 
-@ultroid_cmd(
+@beast_cmd(
     pattern="rbf",
 )
 async def _(event):
@@ -192,3 +182,21 @@ async def _(event):
         else:
             return await eod(event, "Give me some text lol", time=5)
     await eor(event, f"{evaluate(input_)}")
+CMD_HELP.update(
+    {
+        "": """**Addon : **`Brainfuck`
+        
+**Commands in animation4 are **
+ 
+
+✘ Commands Available
+
+• `.bf`
+    Text to Brainfuck String Generator with text or reply.
+
+• `.rbf`
+    Brainfuck Interpreter with string or reply.
+
+  
+**Function : **__Different kinds of animation commands check yourself for their animation .__"""
+    }
