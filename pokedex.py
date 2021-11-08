@@ -6,15 +6,6 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
-"""
-✘ Commands Available -
-
-• `{i}pokemon <query>`
-    Send details of Pokemon.
-
-• `{i}pokecard <query>`
-    Send Card of Pokemon.
-"""
 
 import requests
 from pokedex import pokedex as badhiya
@@ -22,7 +13,7 @@ from pokedex import pokedex as badhiya
 from . import *
 
 
-@ultroid_cmd(pattern="pokemon ?(.*)")
+@beast_cmd(pattern=".pokemon ?(.*)")
 async def pokedex(event):
     pokemon = event.pattern_match.group(1).lower()
     if not pokemon:
@@ -121,7 +112,7 @@ async def pokedex(event):
     await xx.delete()
 
 
-@ultroid_cmd(pattern="pokecard ?(.*)")
+@beast_cmd(pattern=".pokecard ?(.*)")
 async def pokecard(event):
     pokename = event.pattern_match.group(1).lower()
     if not pokename:
@@ -139,3 +130,17 @@ async def pokecard(event):
     except BaseException:
         await eor(event, "`Be sure To give correct Name`")
         return
+CMD_HELP.update(
+    {
+        "": """**Plugin : **`Flaticon`
+        ✘ Commands Available -
+
+• `.pokemon <query>`
+    Send details of Pokemon.
+
+• `.pokecard <query>`
+    Send Card of Pokemon.
+
+"""
+    }
+)
