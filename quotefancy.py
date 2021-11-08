@@ -6,12 +6,9 @@
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
 
-"""
-✘ Commands Available
 
-• `{i}qfancy`
-    Gets random quotes from QuoteFancy.com.
-"""
+
+
 
 from quotefancy import get_quote
 from telethon.errors import ChatSendMediaForbiddenError
@@ -19,7 +16,7 @@ from telethon.errors import ChatSendMediaForbiddenError
 from . import *
 
 
-@ultroid_cmd(pattern="qfancy$")
+@beast_cmd(pattern=".qfancy$")
 async def quotefancy(e):
     mes = await eor(e, "`Processing...`")
     img = get_quote("img", download=True)
@@ -32,3 +29,14 @@ async def quotefancy(e):
         await eor(e, f"`{quote}`")
     except Exception as e:
         await eor(e, f"**ERROR** - {str(e)}")
+CMD_HELP.update(
+    {
+        "": """**Plugin : **`Quotefancy`
+        ✘ Commands Available
+
+• `.qfancy`
+    Gets random quotes from QuoteFancy.com.
+
+"""
+    }
+)
