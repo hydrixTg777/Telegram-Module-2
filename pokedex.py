@@ -132,7 +132,7 @@ async def pokecard(event):
         return
 CMD_HELP.update(
     {
-        "": """**Plugin : **`Flaticon`
+        "": """**Plugin : **`pokedex`
         ✘ Commands Available -
 
 • `.pokemon <query>`
