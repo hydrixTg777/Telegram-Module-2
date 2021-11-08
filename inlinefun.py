@@ -8,27 +8,8 @@
 
 # .uta ported from Dark-Cobra
 
-"""
-✘ Commands Available -
 
-• `{i}uta <search query>`
-    Inline song search and downloader.
 
-• `{i}gglax <query>`
-    Create google search sticker with text.
-
-• `{i}stic <emoji>`
-    Get random stickers from emoji.
-
-• `{i}frog <text>`
-    make text stickers.
-
-• `{i}tweet <text>`
-    make twitter posts.
-
-• `{i}quot <text>`
-    write quote on animated sticker.
-"""
 
 from random import choice
 
@@ -39,7 +20,7 @@ from plugins.stickertools import deEmojify
 from . import *
 
 
-@ultroid_cmd(pattern="tweet ?(.*)")
+@beast_cmd(pattern=".tweet ?(.*)")
 async def tweet(e):
     wai = await eor(e, "`Processing...`")
     text = e.pattern_match.group(1)
@@ -53,7 +34,7 @@ async def tweet(e):
         await eor(e, str(m))
 
 
-@ultroid_cmd(pattern="stic ?(.*)")
+@beast_cmd(pattern=".stic ?(.*)")
 async def tweet(e):
     if len(e.text) > 5 and e.text[5] != " ":
         return
@@ -67,7 +48,7 @@ async def tweet(e):
     await wai.delete()
 
 
-@ultroid_cmd(pattern="gglax ?(.*)")
+@beast_cmd(pattern=".gglax ?(.*)")
 async def gglax_sticker(e):
     wai = await eor(e, "`Processing...`")
     text = e.pattern_match.group(1)
@@ -81,7 +62,7 @@ async def gglax_sticker(e):
         await eor(e, str(m))
 
 
-@ultroid_cmd(pattern="frog ?(.*)")
+@beast_cmd(pattern=".frog ?(.*)")
 async def honkasays(e):
     wai = await eor(e, "`Processing...`")
     text = e.pattern_match.group(1)
@@ -104,7 +85,7 @@ async def honkasays(e):
         await wai.edit(str(er))
 
 
-@ultroid_cmd(pattern="uta ?(.*)")
+@beast_cmd(pattern=".uta ?(.*)")
 async def nope(doit):
     ok = doit.pattern_match.group(1)
     replied = await doit.get_reply_message()
@@ -123,7 +104,7 @@ async def nope(doit):
     await a.delete()
 
 
-@ultroid_cmd(pattern="quot ?(.*)")
+@beast_cmd(pattern=".quot ?(.*)")
 async def quote_(event):
     IFUZI = event.pattern_match.group(1)
     if not IFUZI:
@@ -135,3 +116,33 @@ async def quote_(event):
     except Exception as U_TG:
         return await eor(EI_IR, str(U_TG))
     await EI_IR.delete()
+
+
+CMD_HELP.update(
+    {
+        "": """**Plugin : **`Flaticon`
+        
+     ✘ Commands Available -
+
+• `.uta <search query>`
+    Inline song search and downloader.
+
+• `.gglax <query>`
+    Create google search sticker with text.
+
+• `.stic <emoji>`
+    Get random stickers from emoji.
+
+• `.frog <text>`
+    make text stickers.
+
+• `.tweet <text>`
+    make twitter posts.
+
+• `.quot <text>`
+    write quote on animated sticker.
+"""
+
+
+    }
+)
