@@ -1,19 +1,12 @@
-# Ultroid Userbot
-# Made by senku
 
-"""
-✘ Commands Available
 
-• `{i}findsong <reply to song>`
-   Identify the song name
-"""
 
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
 from . import *
 
 
-@ultroid_cmd(pattern="findsong$")
+@beast_cmd(pattern=".findsong$")
 async def _(event):
     if not event.reply_to_msg_id:
         return await eor(event, "Reply to an audio message.")
@@ -39,3 +32,20 @@ async def _(event):
     namem = f"**Song Name : **{result.text.splitlines()[0]}\
         \n\n**Details : **__{result.text.splitlines()[2]}__"
     await snku.edit(namem)
+
+      
+      
+CMD_HELP.update(
+    {
+        "": """**Plugin : **`findsong`
+         
+
+✘ Commands Available
+
+• `.findsong <reply to song>`
+   Identify the song name
+   """
+    }
+)      
+      
+      
