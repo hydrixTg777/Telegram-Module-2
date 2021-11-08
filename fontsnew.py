@@ -1,42 +1,6 @@
-#
-# Credits @chewmo
-#
-# Ported for Ultroid < https://github.com/TeamUltroid/Ultroid >
-#
 
-"""
-✘ Commands Available -
 
-• `{i}weeb <text>` 
-    turns text to 山乇乇乃 font
 
-• `{i}tantext <text>` 
-    turns text to ᎿᎯᏁᎿᏋﾒᎿ font
-
-• `{i}linetext <text>`
-    turns text to 𝕃𝕀ℕ𝔼𝕋𝔼𝕏𝕋
-
-• `{i}boxtext <text>`
-    turns text to 🄱🄾🅇🅃🄴🅇🅃
-
-• `{i}bubbletext <text>`
-    turns text to ⒷⓊⒷⒷⓁⒺⓉⒺⓍⓉ
-
-• `{i}cursive <text>`
-    turns text to 𝓬𝓾𝓻𝓼𝓲𝓿𝓮 font
-
-• `{i}greekify <text>`
-    turns text to ϑгεεκιғψ font
-
-• `{i}sorcify <text>`
-    turns text to ֆօʀƈɛʀɛʀ font
-
-• `{i}fraktify <text>`
-    turns text to 𝖋𝖗𝖆𝖐𝖙𝖚𝖗𝖊 font
-
-• `{i}rusify <text>`
-    turns text to яц$їfч font
-"""
 
 
 normiefont = [
@@ -349,7 +313,7 @@ rusifont = [
 ]
 
 
-@ultroid_cmd(pattern="weeb ?(.*)")
+@beast_cmd(pattern=".weeb ?(.*)")
 async def weebify(ult):
     args = ult.pattern_match.group(1)
     if not args and ult.is_reply:
@@ -366,7 +330,7 @@ async def weebify(ult):
     await eor(ult, string)
 
 
-@ultroid_cmd(pattern="tantext ?(.*)")
+@beast_cmd(pattern=".tantext ?(.*)")
 async def tantxt(ult):
     args = ult.pattern_match.group(1)
     if not args and ult.is_reply:
@@ -383,7 +347,7 @@ async def tantxt(ult):
     await eor(ult, string)
 
 
-@ultroid_cmd(pattern="linetext ?(.*)")
+@beast_cmd(pattern=".linetext ?(.*)")
 async def linetxt(ult):
     args = ult.pattern_match.group(1)
     if not args and ult.is_reply:
@@ -400,7 +364,7 @@ async def linetxt(ult):
     await ult.edit(string)
 
 
-@ultroid_cmd(pattern="boxtext ?(.*)")
+@beast_cmd(pattern=".boxtext ?(.*)")
 async def boxtxt(ult):
     args = ult.pattern_match.group(1)
     if not args and ult.is_reply:
@@ -416,7 +380,7 @@ async def boxtxt(ult):
     await eor(ult, string)
 
 
-@ultroid_cmd(pattern="bubbletext ?(.*)")
+@beast_cmd(pattern=".bubbletext ?(.*)")
 async def bubbletxt(ult):
     args = ult.pattern_match.group(1)
     if not args and ult.is_reply:
@@ -432,7 +396,7 @@ async def bubbletxt(ult):
     await eor(ult, string)
 
 
-@ultroid_cmd(pattern="cursive ?(.*)")
+@beast_cmd(pattern=".cursive ?(.*)")
 async def cursive(ult):
     args = ult.pattern_match.group(1)
     if not args and ult.is_reply:
@@ -448,7 +412,7 @@ async def cursive(ult):
     await eor(ult, string)
 
 
-@ultroid_cmd(pattern="greekify ?(.*)")
+@beast_cmd(pattern=".greekify ?(.*)")
 async def greektext(ult):
     args = ult.pattern_match.group(1)
     if not args and ult.is_reply:
@@ -464,7 +428,7 @@ async def greektext(ult):
     await eor(ult, string)
 
 
-@ultroid_cmd(pattern="sorcify ?(.*)")
+@beast_cmd(pattern=".sorcify ?(.*)")
 async def sorcerertext(ult):
 
     args = ult.pattern_match.group(1)
@@ -482,7 +446,7 @@ async def sorcerertext(ult):
     await eor(ult, string)
 
 
-@ultroid_cmd(pattern="fraktify ?(.*)")
+@beast_cmd(pattern=".fraktify ?(.*)")
 async def frakturtext(ult):
     args = ult.pattern_match.group(1)
     if not args and ult.is_reply:
@@ -499,7 +463,7 @@ async def frakturtext(ult):
     await eor(ult, string)
 
 
-@ultroid_cmd(pattern="rusify ?(.*)")
+@beast_cmd(pattern=".rusify ?(.*)")
 async def rusitext(ult):
     args = ult.pattern_match.group(1)
     if not args and ult.is_reply:
@@ -513,3 +477,46 @@ async def rusitext(ult):
             rusicharacter = rusifont[normiefont.index(normiecharacter)]
             string = string.replace(normiecharacter, rusicharacter)
     await eor(ult, string)
+
+    
+    
+    
+    
+    CMD_HELP.update(
+    {
+        "": """**Plugin : **`fontsnew`
+        
+        ✘ Commands Available -
+
+• `.weeb <text>` 
+    turns text to 山乇乇乃 font
+
+• `.tantext <text>` 
+    turns text to ᎿᎯᏁᎿᏋﾒᎿ font
+
+• `.linetext <text>`
+    turns text to 𝕃𝕀ℕ𝔼𝕋𝔼𝕏𝕋
+
+• `.boxtext <text>`
+    turns text to 🄱🄾🅇🅃🄴🅇🅃
+
+• `.bubbletext <text>`
+    turns text to ⒷⓊⒷⒷⓁⒺⓉⒺⓍⓉ
+
+• `.cursive <text>`
+    turns text to 𝓬𝓾𝓻𝓼𝓲𝓿𝓮 font
+
+• `.greekify <text>`
+    turns text to ϑгεεκιғψ font
+
+• `.sorcify <text>`
+    turns text to ֆօʀƈɛʀɛʀ font
+
+• `.fraktify <text>`
+    turns text to 𝖋𝖗𝖆𝖐𝖙𝖚𝖗𝖊 font
+
+• `.rusify <text>`
+    turns text to яц$їfч font
+"""
+    }
+)
