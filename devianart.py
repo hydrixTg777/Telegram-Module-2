@@ -50,7 +50,7 @@ async def downakd(e):
     
 CMD_HELP.update(
     {
-        "": """**Plugin : **`Addons1`
+        "": """**Plugin : **`devian`
         
 **Commands in animation4 are **
  
