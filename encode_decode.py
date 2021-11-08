@@ -40,7 +40,7 @@ async def encod(e):
         await eor(e, "**ERROR :** " + str(p))
 CMD_HELP.update(
     {
-        "": """**Plugin : **`Addons1`
+        "": """**Plugin : **`encode/decode`
         
 **Commands in animation4 are **
  
