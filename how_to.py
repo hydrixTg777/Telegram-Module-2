@@ -1,20 +1,5 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
-"""
-✘ Commands Available -
 
-• `{i}htg <text>`
-   How To Google.
-   Some peoples don't know how to google so help them 🙃🙂.
-
-• `{i}htd <text>`
-   How to duck duck go...
-"""
 
 
 import requests
@@ -22,7 +7,7 @@ import requests
 from . import *
 
 
-@ultroid_cmd(pattern="htg ?(.*)")
+@beast_cmd(pattern=".htg ?(.*)")
 async def _(e):
     text = e.pattern_match.group(1)
     if not text:
@@ -37,7 +22,7 @@ async def _(e):
         await eod(e, "`something is wrong. please try again later.`")
 
 
-@ultroid_cmd(pattern="htd ?(.*)")
+@beast_cmd(pattern=".htd ?(.*)")
 async def _(e):
     text = e.pattern_match.group(1)
     if not text:
@@ -50,3 +35,19 @@ async def _(e):
         await eor(e, "[{}]({})\n`Thank me Later 🙃` ".format(text, response.rstrip()))
     else:
         await eod(e, "`something is wrong. please try again later.`")
+CMD_HELP.update(
+    {
+        "": """**Plugin : **`How_to`
+        
+       ✘ Commands Available -
+
+• `.htg <text>`
+   How To Google.
+   Some peoples don't know how to google so help them 🙃🙂.
+
+• `.htd <text>`
+   How to duck duck go...
+
+"""
+    }
+)
