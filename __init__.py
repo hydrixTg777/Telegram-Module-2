@@ -6,4 +6,4 @@
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
 
-from plugins import *
+from modules import *
