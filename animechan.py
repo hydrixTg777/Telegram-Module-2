@@ -23,3 +23,16 @@ async def _(ult):
         return await u.edit(results)
     except Exception:
         await u.edit("`Something went wrong LOL ...`")
+
+        
+ CMD_HELP.update(
+    {
+        "aniquote": """**Plugin : **`aniquote`
+        
+**Commands in aniquote are **
+  •  `.aniquote`
+ 
+  
+**Function : **__Different kinds of aniquote"""
+    }
+)
