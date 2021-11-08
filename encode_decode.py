@@ -1,26 +1,13 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
-"""
-✘ Commands Available -
 
-• {i}encode <text/reply to message>
-    encode the text
 
- • {i}decode <text/reply to message>
-    decode the text
-"""
 
 import base64
 
 from . import *
 
 
-@ultroid_cmd(pattern="encode ?(.*)")
+@beast_cmd(pattern=".encode ?(.*)")
 async def encod(e):
     match = e.pattern_match.group(1)
     if not match and e.is_reply:
@@ -35,7 +22,7 @@ async def encod(e):
     await eor(e, f"**=>> Encoded Text :** `{match}`\n\n**=>> OUTPUT :**\n`{atc}`")
 
 
-@ultroid_cmd(pattern="decode ?(.*)")
+@beast_cmd(pattern=".decode ?(.*)")
 async def encod(e):
     match = e.pattern_match.group(1)
     if not match and e.is_reply:
@@ -51,3 +38,20 @@ async def encod(e):
         await eor(e, f"**=>> Decoded Text :** `{match}`\n\n**=>> OUTPUT :**\n`{atc}`")
     except Exception as p:
         await eor(e, "**ERROR :** " + str(p))
+CMD_HELP.update(
+    {
+        "": """**Plugin : **`Addons1`
+        
+**Commands in animation4 are **
+ 
+✘ Commands Available -
+
+• {i}encode <text/reply to message>
+    encode the text
+
+ • {i}decode <text/reply to message>
+    decode the text
+
+"""
+    }
+)
