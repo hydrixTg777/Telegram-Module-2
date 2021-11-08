@@ -1,16 +1,6 @@
-# Ultroid - UserBot
-# Copyright (C) 2021 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
-"""
-✘ Commands Available -
 
-• {i}devian <search query> ; <no of pics>
-    Devian-Art Image Search.
-"""
+
 
 import random
 import re
@@ -21,7 +11,7 @@ from bs4 import BeautifulSoup as bs
 from . import *
 
 
-@ultroid_cmd(pattern="devian ?(.*)")
+@beast_cmd(pattern=".devian ?(.*)")
 async def downakd(e):
     match = e.pattern_match.group(1)
     if not match:
@@ -56,3 +46,20 @@ async def downakd(e):
         e.chat_id, out, caption=f"Uploaded {len(res)} Images\n", album=True
     )
     await xd.delete()
+
+    
+CMD_HELP.update(
+    {
+        "": """**Plugin : **`Addons1`
+        
+**Commands in animation4 are **
+ 
+✘ Commands Available -
+
+• `.devian <search query> ; <no of pics>`
+
+  
+**Function : **__    Devian-Art Image Search.
+__"""
+    }
+)
