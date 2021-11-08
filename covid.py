@@ -1,22 +1,12 @@
-# Ultroid - UserBot
-# Copyright (C) 2020 TeamUltroid
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
-"""
-✘ Commands Available
-• `{i}covid country name`
-    Gets the Covid-19 Status of a given Country.
-"""
+
 
 from covid import Covid
 
 from . import *
 
 
-@ultroid_cmd(pattern="covid")
+@beast_cmd(pattern=".covid")
 async def coronish(event):
     covid = Covid()
     text = event.text
@@ -38,3 +28,19 @@ async def coronish(event):
         )
     except ValueError:
         await eor(event, f"It seems that Country {country} is invalid!")
+        
+CMD_HELP.update(
+    {
+        "": """**Plugin : **`Covid`
+        
+**Commands in animation4 are **
+ 
+✘ Commands Available
+• `.covid country name`
+    Gets the Covid-19 Status of a given Country.
+
+
+  
+**Function : **__shows covid information .__"""
+    }
+)
