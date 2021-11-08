@@ -1,9 +1,3 @@
-"""
-✘ Commands Available
-
-• `{i}figlet <text>`
-    Make a text a figlet.
-"""
 
 import pyfiglet
 
@@ -461,7 +455,7 @@ CMD_SET = {
 }
 
 
-@ultroid_cmd(pattern="figlet ?(.*)")
+@beast_cmd(pattern=".figlet ?(.*)")
 async def figlet(event):
     input_str = event.pattern_match.group(1)
     if "|" in input_str:
@@ -482,3 +476,18 @@ async def figlet(event):
     else:
         result = pyfiglet.figlet_format(text)
     await eor(event, f"‌‌‎`{result}`")
+
+    
+CMD_HELP.update(
+    {
+        "": """**Plugin : **`figlet`
+        
+
+✘ Commands Available
+
+• `.figlet <text>`
+    Make a text a figlet.
+
+"""    }
+)    
+    
