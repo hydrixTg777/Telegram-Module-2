@@ -1,5 +1,4 @@
-# Made by : @Arnab431 || github.com/ArnabXD
-# Made For : https://github.com/TeamUltroid/UltroidAddons
+#ported from ultroid to Beastx
 
 """
 Search animes and manga from anilist.co using @animedb_bot
@@ -10,14 +9,17 @@ Search animes and manga from anilist.co using @animedb_bot
 """
 
 from telethon.errors import ChatSendInlineForbiddenError
+import requests as r
+from bs4 import BeautifulSoup as bs
+
 
 from . import *
 
 INLOCK = "`Seems like inline messages aren't allowed here`"
-
-
-@ultroid_cmd(
-    pattern="manga ?(.*)",
+eor = edit_or_reply
+eod = edit_or_reply
+@beast_cmd(
+    pattern=".manga ?(.*)",
 )
 async def manga(ult):
     msg = await eor(ult, "`Searching ...`")
@@ -35,3 +37,76 @@ async def manga(ult):
         return await msg.delete()
     except Exception:
         return await msg.edit("`No Results Found ...`")
+
+@beast_cmd(pattern=".apod$")
+async def aposj(e):
+    link = "https://apod.nasa.gov/apod/"
+    C = r.get(link).content
+    m = bs(C, "html.parser", from_encoding="utf-8")
+    try:
+        try:
+            img = m.find_all("img")[0]["src"]
+            img = link + img
+        except IndexError:
+            img = None
+        expla = m.find_all("p")[2].text.replace("\n", " ")
+        expla = expla.split("     ")[0]
+        if len(expla) > 3000:
+            expla = expla[:3000] + "..."
+        expla = "__" + expla + "__"
+        await e.reply(expla, file=img)
+        if e.out:
+            await e.delete()
+    except Exception as E:
+        return await eor(e, str(E))
+    
+ @ultroid_cmd(pattern=".asupan ?(.*)")
+async def _(event):
+    try:
+        response = requests.get("https://api-tede.herokuapp.com/api/asupan/ptl").json()
+        await event.client.send_file(event.chat_id, response["url"])
+        await event.delete()
+    except Exception:
+        await eor(event, "`Something went wrong LOL...`")
+
+
+@ultroid_cmd(pattern=".wibu ?(.*)")
+async def _(event):
+    try:
+        response = requests.get("https://api-tede.herokuapp.com/api/asupan/wibu").json()
+        await event.client.send_file(event.chat_id, response["url"])
+        await event.delete()
+    except Exception:
+        await eor(event, "`Something went wrong LOL...`")
+
+
+@ultroid_cmd(pattern=".chika ?(.*)")
+async def _(event):
+    try:
+        response = requests.get("https://api-tede.herokuapp.com/api/chika").json()
+        await event.client.send_file(event.chat_id, response["url"])
+        await event.delete()
+    except Exception:
+        await eor(event, "`Something went wrong LOL...`")   
+CMD_HELP.update(
+    {
+        "": """**Plugin : **`Addons1`
+        
+**Commands in animation4 are **
+ 
+✘ Commands Available -
+• `.asupan`
+   To send random intake video.
+• `.wibu`
+   To send a random wibu video.
+• `.chika`
+   To send a random chikakiku video.
+     To send random intake video.
+• `.manga`
+   To send a random wibu video.
+• `.apod`
+   To send a random chikakiku video.
+  
+**Function : **__Different kinds of animation commands check yourself for their animation .__"""
+    }
+)
