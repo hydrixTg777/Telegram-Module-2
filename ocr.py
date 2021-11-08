@@ -1,20 +1,3 @@
-#
-# Ultroid - UserBot
-#
-# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
-#
-
-
-"""
-✘ Commands Available -
-
-• `{i}ocr <language code><reply to a photo>`
-    text recognition service.
-
-"""
-
 
 import requests as r
 from telegraph import upload_file as uf
@@ -24,7 +7,7 @@ from . import *
 TE = f"API not found, Please get it from ocr.space and set\n\ncommand `{HNDLR}setredis OCR_API your-api-key`"
 
 
-@ultroid_cmd(pattern="ocr ?(.*)")
+@beast_cmd(pattern=".ocr ?(.*)")
 async def ocrify(ult):
     if not ult.is_reply:
         return await eor(ult, "`Reply to Photo...`")
@@ -48,3 +31,15 @@ async def ocrify(ult):
     ).json()
     trt = gr["ParsedResults"][0]["ParsedText"]
     await msg.edit(f"**🎉 OCR PORTAL\n\nRESULTS ~ ** `{trt}`")
+CMD_HELP.update(
+    {
+        "": """**Plugin : **`Ocr`
+        ✘ Commands Available -
+
+• `.ocr <language code><reply to a photo>`
+    text recognition service.
+
+
+"""
+    }
+)
