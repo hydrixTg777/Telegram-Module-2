@@ -13,7 +13,7 @@ import requests
 from . import *
 
 
-@ultroid_cmd(pattern="aniquote")
+@beast_cmd(pattern=".aniquote")
 async def _(ult):
     u = await eor(ult, "...")
     try:
