@@ -3,12 +3,6 @@
 # Ported from @UserbotPlugins
 # originally from jeepbot for uniborg
 
-"""
-Search movie details from IMDB
-
-✘ Commands Available
-• `{i}imdb <keyword>`
-"""
 
 import re
 
@@ -20,7 +14,7 @@ from . import *
 langi = "en"
 
 
-@ultroid_cmd(pattern="imdb ?(.*)")
+@beast_cmd(pattern=".imdb ?(.*)")
 async def imdb(e):
     await eor(e, "`...`")
     movie_name = e.pattern_match.group(1)
@@ -103,3 +97,17 @@ async def imdb(e):
         )
     except IndexError:
         return await eor(e, "Something went wrong ...")
+    
+CMD_HELP.update(
+    {
+        "": """**Plugin : **`imdb`
+        
+        Search movie details from IMDB
+
+✘ Commands Available
+• `{i}imdb <keyword>`
+"""
+
+    }
+)
+    
