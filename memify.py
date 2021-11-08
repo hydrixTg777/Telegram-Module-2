@@ -8,18 +8,11 @@
 # PLease read the GNU Affero General Public License in
 # <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
-"""
-✘ Commands Available -
 
-• `{i}mmf <upper text> ; <lower text> <reply to media>`
-    To create memes as sticker,
-    for trying different fonts use (.mmf <text>_1)(u can use 1 to 10).
 
-• `{i}mms <upper text> ; <lower text> <reply to media>`
-    To create memes as pic,
-    for trying different fonts use (.mms <text>_1)(u can use 1 to 10).
 
-"""
+
+
 
 import asyncio
 import os
@@ -31,7 +24,7 @@ from PIL import Image, ImageDraw, ImageFont
 from . import *
 
 
-@ultroid_cmd(pattern="mmf ?(.*)")
+@beast_cmd(pattern=".mmf ?(.*)")
 async def ultd(event):
     ureply = await event.get_reply_message()
     msg = event.pattern_match.group(1)
@@ -183,7 +176,7 @@ async def draw_meme_text(image_path, msg):
     return imag
 
 
-@ultroid_cmd(pattern="mms ?(.*)")
+@beast_cmd(pattern=".mms ?(.*)")
 async def mms(event):
     ureply = await event.get_reply_message()
     msg = event.pattern_match.group(1)
@@ -333,3 +326,21 @@ async def draw_meme(image_path, msg):
     pics = "ultt.png"
     img.save(pics, "png")
     return pics
+CMD_HELP.update(
+    {
+        "": """**Plugin : **`memify`
+      ✘ Commands Available -
+
+• `.mmf <upper text> ; <lower text> <reply to media>`
+    To create memes as sticker,
+    for trying different fonts use (.mmf <text>_1)(u can use 1 to 10).
+
+• `.mms <upper text> ; <lower text> <reply to media>`
+    To create memes as pic,
+    for trying different fonts use (.mms <text>_1)(u can use 1 to 10).
+
+"""
+      
+      
+    }
+)
