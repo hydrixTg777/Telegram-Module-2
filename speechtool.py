@@ -8,16 +8,7 @@
 # tts- Ported from Telebot
 
 
-"""
-✘ Commands Available -
 
-• `{i}tts` `LanguageCode <reply to a message>`
-• `{i}tts` `LangaugeCode | text to speak`
-
-• `{i}stt` `<reply to audio file>`
-  `Convert Speech to Text...`
-  `Note - Sometimes Not 100% Accurate`
-"""
 
 import asyncio
 import os
@@ -32,8 +23,8 @@ from . import *
 reco = sr.Recognizer()
 
 
-@ultroid_cmd(
-    pattern="tts ?(.*)",
+@beast_cmd(
+    pattern=".tts ?(.*)",
 )
 async def _(event):
     input_str = event.pattern_match.group(1)
@@ -87,7 +78,7 @@ async def _(event):
         await eor(event, str(e))
 
 
-@ultroid_cmd(pattern="stt")
+@beast_cmd(pattern=".stt")
 async def speec_(e):
     reply = await e.get_reply_message()
     if not (reply and reply.media):
@@ -106,3 +97,21 @@ async def speec_(e):
     await eor(e, out)
     os.remove(fn)
     os.remove(re)
+CMD_HELP.update(
+    {
+        "": """**Plugin : **`SPAM`
+        ✘ Commands Available -
+
+• `.tts` `LanguageCode <reply to a message>`
+• `.tts` `LangaugeCode | text to speak`
+
+• `.stt` `<reply to audio file>`
+  `Convert Speech to Text...`
+  `Note - Sometimes Not 100% Accurate`
+
+
+
+        
+"""
+    }
+)
