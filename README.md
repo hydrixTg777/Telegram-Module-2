@@ -13,7 +13,7 @@ If you want to contribute to this repository (adding your plugins/porting from o
 # Credits @username (creator of plugin and who ported)   
    
 # Ported from (if ported else skip)   
-   
+   .
 # Ported for Ultroid < https://github.com/TeamUltroid/Ultroid >   
 ```
    
